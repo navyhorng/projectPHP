@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap @5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <title>List of Books</title>
     <style>
@@ -27,7 +26,7 @@
         .table td {
             vertical-align: middle;
             text-align: center;
-            min-width: 150px;
+            min-width: 300px;
             white-space: normal;
         }
 
@@ -54,15 +53,18 @@
             
         }
         header{
-            margin-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        .alert{
+            color: green;
         }
     </style>
 </head>
 <body>
 
 <div class="container py-5">
-    <header class="d-flex flex-wrap justify-content-between align-items-center mb-4">
-        <h1 class="h3">📚 Book List</h1>
+    <header class="d-flex flex-wrap justify-content-between align-items-center mt-4">
+        <h1 class="h3">Book List</h1>
         <div>
             <a href="create.php" class="btn btn-danger my-5">➕ Add New Book</a>
         </div>
@@ -79,13 +81,20 @@
 
     foreach ($messages as $key => $msg) {
         if (isset($_SESSION[$key])) {
-            echo "<div class='alert alert-success alert-dismissible fade show' role='alert'>
-                    $msg
-                    <button type='button' class='btn-close' data-bs-dismiss='alert'></button>
-                  </div>";
+            echo "<div id='alert-{$key}' class='alert alert-success alert-dismissible fade show' role='alert'>
+                    " . htmlspecialchars($msg) . "
+                </div>
+                <script>
+                    setTimeout(function() {
+                        var alertBox = document.getElementById('alert-{$key}');
+                        if (alertBox) {
+                            alertBox.remove();
+                        }
+                    }, 2000);
+                </script>";
             unset($_SESSION[$key]);
         }
-    }
+}
     ?>
 
     <div class="table-container">
@@ -103,7 +112,7 @@
                 <tbody>
                     <?php
                     include('connect.php');
-                    $sql = "SELECT * FROM books";
+                    $sql = "SELECT * FROM books WHERE is_active=1";
                     $result = mysqli_query($conn, $sql);
                     while ($data = mysqli_fetch_array($result)) {
                     ?>
@@ -125,7 +134,6 @@
     </div>
 </div>
 
-<!-- Bootstrap JS Bundle -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap @5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

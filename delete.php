@@ -2,7 +2,7 @@
 if(isset($_GET['id'])){
     include("connect.php");
     $id = $_GET['id'];
-    $sql = "DELETE FROM books WHERE id ='$id'";
+    $sql = "UPDATE books SET is_active = 0 WHERE id = '$id'";
     if(mysqli_query($conn, $sql)){
         session_start();
         $_SESSION["delete"] = "Book Deleted.";
