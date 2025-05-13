@@ -3,137 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap @5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <title>List of Books</title>
+    <title>Book Management Project</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        body {
-            background-color: #f8f9fa;
-            align-items: center;
-            justify-content: center;
-            display: flex;
-            
+        body{
+            background-color:black;
+            color: #ffffff;
+        }
+        .card {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 3s ease-out forwards;
+            margin-top: 8rem;
+            padding: 3rem;
+            background-color: #ffffff;
+            border-radius: 1rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
         }
 
-        .table-container {
-            border: black;
-            background-color: white;
-            border-radius: 10px;
-            padding: 50px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.05);
+        @keyframes fadeInUp {
+            to {
+                opacity: 2;
+                transform: translateY(0);
+            }
+        }
+        .card-body{
+            margin-top: 1rem;
+        }
+        .card-text{
+            font-size: 22px;
+        }
+        .project-btn {
+            transition: all 0.3s ease;
+            color:  #ffffff;
         }
 
-        .table th,
-        .table td {
-            vertical-align: middle;
-            text-align: center;
-            min-width: 300px;
-            white-space: normal;
-        }
-
-        .table th {
-            background-color:rgb(111, 116, 123);
-            color: white;
-        }
-
-        .table td:nth-child(2),
-        .table td:nth-child(3) {
-            min-width: auto;
-        }
-
-        .table {
-            font-size: 20px;
-        }
-
-        .btn-group .btn {
-            margin: 5px;
-        }
-        a{
-            text-decoration: none;
-            font-size: 20px
-            
-        }
-        header{
-            margin-bottom: 30px;
-        }
-        .alert{
-            color: green;
+        .project-btn:hover {
+            color:rgb(245, 240, 240);
+            background-color:#3a2d3d !important;
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
     </style>
+    
 </head>
 <body>
 
-<div class="container py-5">
-    <header class="d-flex flex-wrap justify-content-between align-items-center mt-4">
-        <h1 class="h3">Book List</h1>
-        <div>
-            <a href="create.php" class="btn btn-danger my-5">➕ Add New Book</a>
-        </div>
-    </header>
-
-    <!-- Session Messages -->
-    <?php
-    session_start();
-    $messages = [
-        'create' => 'Book added successfully!',
-        'update' => 'Book updated successfully!',
-        'delete' => 'Book deleted successfully!'
-    ];
-
-    foreach ($messages as $key => $msg) {
-        if (isset($_SESSION[$key])) {
-            echo "<div id='alert-{$key}' class='alert alert-success alert-dismissible fade show' role='alert'>
-                    " . htmlspecialchars($msg) . "
+    <div class="about container-fluid mt-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 col-md-10">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <h2 class="card-title text-center mb-4">Book Management System Project</h2>
+                        <p class="card-text">
+                            The Book Management System is a simple web-based application developed using PHP, MySQL, and Bootstrap. 
+                            The main goal of the project is to provide basic CRUD functionality, allowing users to create, view, update, 
+                            and delete book records in a structured and user-friendly interface. Each book record includes important details 
+                            such as the title, author, category, and publication year. By using a MySQL database, the system ensures that 
+                            all data is stored efficiently and can be retrieved quickly when needed.
+                            <br><br>
+                            In conclusion, this project provides a practical example of implementing core CRUD operations in a real-world scenario. 
+                            It demonstrates how web technologies can be combined to build a functional and responsive system that can be further 
+                            enhanced in the future with additional features such as search, login, and reporting tools.
+                        </p>
+                    </div>
                 </div>
-                <script>
-                    setTimeout(function() {
-                        var alertBox = document.getElementById('alert-{$key}');
-                        if (alertBox) {
-                            alertBox.remove();
-                        }
-                    }, 2000);
-                </script>";
-            unset($_SESSION[$key]);
-        }
-}
-    ?>
-
-    <div class="table-container">
-        <div class="table-responsive">
-            <table class="table table-hover table-bordered align-middle fs-5">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Title</th>
-                        <th>Author</th>
-                        <th>Type</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                    include('connect.php');
-                    $sql = "SELECT * FROM books WHERE is_active=1";
-                    $result = mysqli_query($conn, $sql);
-                    while ($data = mysqli_fetch_array($result)) {
-                    ?>
-                        <tr>
-                            <td><?= htmlspecialchars($data['id']) ?></td>
-                            <td><?= htmlspecialchars($data['title']) ?></td>
-                            <td><?= htmlspecialchars($data['author']) ?></td>
-                            <td><?= htmlspecialchars($data['type']) ?></td>
-                            <td class="btn-group">
-                                <a href="readmore.php?id=<?= $data['id'] ?>" class="btn btn-sm btn-info text-white">📖</a>
-                                <a href="edit.php?id=<?= $data['id'] ?>" class="btn btn-sm btn-warning">✏️</a>
-                                <a href="delete.php?id=<?= $data['id'] ?>" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')">🗑️</a>
-                            </td>
-                        </tr>
-                    <?php } ?>
-                </tbody>
-            </table>
+                <a href="./viewingTable.php" class="btn border-dark btn-lg mt-5 project-btn" data-aos="fade-up" data-aos-delay="500">
+                    Let's go to the project
+                </a>
+            </div>
         </div>
     </div>
-</div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap @5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Bootstrap JS Bundle (with Popper) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

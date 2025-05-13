@@ -6,14 +6,28 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <title>Book Details</title>
     <style>
+        body{
+            background-color: black;
+            color: #3a2d3d;
+        }
+        .create{
+            background-color: #fff6f0;
+            margin-top: 8rem;
+            border-radius: 20px;
+        }
         .book-details{
-            background-color:#f5f5f5;
+           
             border-radius: 2px;
+        }
+        .btn{
+            color: #fff6f0;
+            background-color:#FF0B50 !important;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
     </style>
 </head>
 <body>
-    <div class="container my-4">
+    <div class="container create p-4">
         <header class="d-flex justify-content-between my-4">
             <h1>Book Details</h1>    
         </header>
@@ -46,7 +60,7 @@
         <footer class="d-flex justify-content-between my-4">
             <div class="div"></div>
             <div>
-                <a href="index.php" class="btn border-dark">Back</a>
+                <a href="./viewingTable.php" class="btn border-dark">Back</a>
             </div>
         </footer>
     </div>

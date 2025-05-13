@@ -6,7 +6,7 @@ if(isset($_GET['id'])){
     if(mysqli_query($conn, $sql)){
         session_start();
         $_SESSION["delete"] = "Book Deleted.";
-        header("Location:index.php");
+        header("Location:viewingTable.php");
     }
     else{
         die("Something went wrong");

@@ -9,7 +9,7 @@ if(isset($_POST["create"])){
     if(mysqli_query($conn,$sql)){
         session_start();
         $_SESSION["crate"] = "Book Added Successsfully";
-        header("Location:index.php");
+        header("Location:viewingTable.php");
     }
     else{
         die("Somthing went wrong");
@@ -25,7 +25,7 @@ if(isset($_POST["edit"])){
     if(mysqli_query($conn, $sql)){
         session_start();
         $_SESSION["update"] = "Book Update Successfully";
-        header("Location:index.php");
+        header("Location:viewingTable.php");
     }else{
         die("Something went wrong");
     }
