@@ -37,6 +37,7 @@
         .project-btn {
             transition: all 0.3s ease;
             color:  #ffffff;
+            margin-bottom: 20px;
         }
 
         .project-btn:hover {
@@ -50,9 +51,9 @@
 </head>
 <body>
 
-    <div class="about container-fluid mt-5">
+    <div class="about container mt-5">
         <div class="row justify-content-center">
-            <div class="col-lg-8 col-md-10">
+            <div class="col-lg-8 col-md-10 col-sm-12">
                 <div class="card shadow-sm">
                     <div class="card-body">
                         <h2 class="card-title text-center mb-4">Book Management System Project</h2>
