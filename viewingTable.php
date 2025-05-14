@@ -9,25 +9,31 @@
     <style>
         body {
             color: #3a2d3d;
+            display: flex;
             align-items: center;
             justify-content: center;
-            display: flex;
+            padding: 20px;
+        }
 
+        .container {
+            margin: auto;
+            max-width: 1200px;
         }
 
         .table-container {
             background-color: #fff6f0;
             border-radius: 10px;
-            padding: 50px;
+            padding: 30px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+            overflow-x: auto;
         }
 
         .table th,
         .table td {
             vertical-align: middle;
             text-align: center;
-            min-width: 300px;
             white-space: normal;
+            word-wrap: break-word;
         }
 
         .table th {
@@ -35,13 +41,8 @@
             color: white;
         }
 
-        .table td:nth-child(2),
-        .table td:nth-child(3) {
-            min-width: auto;
-        }
-
         .table {
-            font-size: 20px;
+            font-size: 18px;
         }
 
         .btn-group .btn {
@@ -50,17 +51,86 @@
 
         a {
             text-decoration: none;
-            font-size: 20px
+            font-size: 18px;
         }
 
         header {
-            margin-bottom: 30px;
+            margin-bottom: 20px;
+            flex-direction: column;
+            text-align: center;
         }
 
         .alert {
             color: green;
         }
+
+        /* ===== Media Queries ===== */
+
+        /* Desktop: width ≥ 1024px */
+        @media (min-width: 1024px) {
+            header {
+                flex-direction: row;
+                text-align: left;
+            }
+
+            .table {
+                font-size: 20px;
+            }
+
+            .table th,
+            .table td {
+                min-width: 150px;
+            }
+        }
+
+        /* Tablet: 768px–1023px */
+        @media (min-width: 768px) and (max-width: 1023px) {
+            .table {
+                font-size: 16px;
+            }
+
+            .table-container {
+                padding: 20px;
+            }
+
+            .btn-group .btn {
+                font-size: 14px;
+            }
+        }
+
+        /* Mobile: width ≤ 767px */
+        @media (max-width: 767px) {
+            .table {
+                font-size: 14px;
+            }
+
+            .table th,
+            .table td {
+                min-width: 100px;
+            }
+
+            .btn-group {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn-group .btn {
+                width: 100%;
+                font-size: 14px;
+                margin-bottom: 5px;
+            }
+
+            header h1 {
+                font-size: 20px;
+            }
+
+            a.btn {
+                font-size: 14px;
+            }
+        }
     </style>
+
 </head>
 
 <body>
