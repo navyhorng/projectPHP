@@ -64,10 +64,6 @@
         .alert {
             color: green;
         }
-
-        /* ===== Media Queries ===== */
-
-        /* Desktop: width ≥ 1024px */
         @media (min-width: 1024px) {
             header {
                 flex-direction: row;
@@ -83,8 +79,6 @@
                 min-width: 150px;
             }
         }
-
-        /* Tablet: 768px–1023px */
         @media (min-width: 768px) and (max-width: 1023px) {
             .table {
                 font-size: 16px;
@@ -99,7 +93,6 @@
             }
         }
 
-        /* Mobile: width ≤ 767px */
         @media (max-width: 767px) {
             .table {
                 font-size: 14px;
@@ -144,8 +137,6 @@
                 <a href="create.php" class="btn btn-danger my-5">➕ Add New Book</a>
             </div>
         </header>
-
-        <!-- Session Messages -->
         <?php
         session_start();
         $messages = [

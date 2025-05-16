@@ -60,7 +60,7 @@
                             The Book Management System is a simple web-based application developed using PHP, MySQL, and Bootstrap. 
                             The main goal of the project is to provide basic CRUD functionality, allowing users to create, view, update, 
                             and delete book records in a structured and user-friendly interface. Each book record includes important details 
-                            such as the title, author, category, and publication year. By using a MySQL database, the system ensures that 
+                            such as the title, author, type and description. By using a MySQL database, the system ensures that 
                             all data is stored efficiently and can be retrieved quickly when needed.
                             <br><br>
                             In conclusion, this project provides a practical example of implementing core CRUD operations in a real-world scenario. 
@@ -70,7 +70,7 @@
                     </div>
                 </div>
                 <a href="./viewingTable.php" class="btn border-dark btn-lg mt-5 project-btn" data-aos="fade-up" data-aos-delay="500">
-                    Let's go to the project
+                    Go to
                 </a>
             </div>
         </div>
