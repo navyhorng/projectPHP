@@ -16,6 +16,7 @@
         }
 
         .container {
+            width: 100%;
             margin: auto;
             max-width: 1200px;
         }
